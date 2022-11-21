@@ -55,5 +55,24 @@ public class Main {
         Car.BodyType.checkBodyType(car3);
         Bus.TypeOfCapacity.checkTypeOfCapacity(bus2);
         Truck.LoadCapacity.checkLoadCapacity(truck1);
+
+        System.out.println("----------------------------------------------------------------------------------");
+
+        service(car1, car2, car3, car4,
+                bus1, bus2, bus3, bus4,
+                truck1, truck2, truck3, truck4);
+    }
+
+    private static void service(Transport... transports) {
+        for (Transport transport : transports) {
+            if (!transport.service()) {
+                try {
+                    throw new RuntimeException("Автомобиль " + transport.getBrand() + " " +
+                            transport.getModel() + " не прошел диагностику!");
+                } catch (RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
     }
 }

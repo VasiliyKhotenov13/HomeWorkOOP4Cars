@@ -42,6 +42,8 @@ public abstract class Transport {
 
     public abstract void stopMoving();
 
+    public abstract boolean service();
+
     @Override
     public String toString() {
         return "Транспорт. " +
