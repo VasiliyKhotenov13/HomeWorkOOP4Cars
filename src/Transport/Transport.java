@@ -43,6 +43,14 @@ public abstract class Transport {
     public abstract void stopMoving();
 
     @Override
+    public String toString() {
+        return "Транспорт. " +
+                " Марка: " + brand +
+                ". Модель: " + model +
+                ". Объём двигателя: " + engineVolume + " л.";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -53,13 +61,5 @@ public abstract class Transport {
     @Override
     public int hashCode() {
         return Objects.hash(brand, model, engineVolume);
-    }
-
-    @Override
-    public String toString() {
-        return "Транспорт. " +
-                " Марка: " + brand +
-                ". Модель: " + model +
-                ". Объём двигателя: " + engineVolume + " л.";
     }
 }

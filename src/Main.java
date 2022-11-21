@@ -3,25 +3,26 @@ import Driver.DriverC;
 import Driver.DriverD;
 import Transport.Bus;
 import Transport.Car;
+import Transport.Transport;
 import Transport.Truck;
 
 public class Main {
     public static void main(String[] args) {
 
-        Car car1 = new Car("Ламборджини", "Галлардо", 5.4);
-        Car car2 = new Car("Порш", "Панамера", 4.5);
-        Car car3 = new Car("Тойота", "Камри", 3.5);
-        Car car4 = new Car("Лада", "Веста Спорт", 1.6);
+        Car car1 = new Car("Ламборджини", "Галлардо", 5.4, Car.BodyType.COUPE);
+        Car car2 = new Car("Порш", "Панамера", 4.5, Car.BodyType.SEDAN);
+        Car car3 = new Car("Тойота", "Камри", 3.5, Car.BodyType.SEDAN);
+        Car car4 = new Car("Лада", "Веста Спорт", 1.6, Car.BodyType.CROSSOVER);
 
-        Bus bus1 = new Bus("Икарус", "265", 8.0);
-        Bus bus2 = new Bus("Икарус", "256", 7.2);
-        Bus bus3 = new Bus("ГАЗель", "CITY", 3.0);
-        Bus bus4 = new Bus("KIA", "GrandBird", 12.3);
+        Bus bus1 = new Bus("Икарус", "265", 8.0, Bus.TypeOfCapacity.VERY_LARGE);
+        Bus bus2 = new Bus("Икарус", "256", 7.2, Bus.TypeOfCapacity.AVERAGE);
+        Bus bus3 = new Bus("ГАЗель", "CITY", 3.0, Bus.TypeOfCapacity.SMALL);
+        Bus bus4 = new Bus("KIA", "GrandBird", 12.3, Bus.TypeOfCapacity.LARGE);
 
-        Truck truck1 = new Truck("Scania", "R 730", 16.4);
-        Truck truck2 = new Truck("MAN", "TGX", 15.2);
-        Truck truck3 = new Truck("Mercedes-Benz", "Actros SLT", 15.6);
-        Truck truck4 = new Truck("КамАЗ", "4326-9", 18.5);
+        Truck truck1 = new Truck("Scania", "R 730", 16.4, Truck.LoadCapacity.N1);
+        Truck truck2 = new Truck("MAN", "TGX", 15.2, Truck.LoadCapacity.N2);
+        Truck truck3 = new Truck("Mercedes-Benz", "Actros SLT", 15.6, Truck.LoadCapacity.N3);
+        Truck truck4 = new Truck("КамАЗ", "4326-9", 18.5, Truck.LoadCapacity.N1);
 
         System.out.println(car1.toString());
         System.out.println(bus2.toString());
@@ -49,5 +50,10 @@ public class Main {
         driverC1.stopMovement();
         driverB2.refuel();
 
+        System.out.println("----------------------------------------------------------------------------------");
+
+        Car.BodyType.checkBodyType(car3);
+        Bus.TypeOfCapacity.checkTypeOfCapacity(bus2);
+        Truck.LoadCapacity.checkLoadCapacity(truck1);
     }
 }
