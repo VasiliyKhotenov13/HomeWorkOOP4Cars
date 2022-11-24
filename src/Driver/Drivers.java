@@ -66,6 +66,9 @@ public abstract class Drivers<T extends Transport> {
         this.car = car;
     }
 
+    public void add(Drivers<?> driver) {
+    }
+
     @Override
     public String toString() {
         return "Водитель " + fullName +

@@ -58,6 +58,11 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
+    public void repair() {
+        System.out.println("Грузовик " + getBrand() + " " + getModel() + " отремонтирован!!!");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println(getBrand() + " встал на пит-стоп!");
     }
@@ -71,6 +76,7 @@ public class Truck extends Transport implements Competing {
     public int maxSpeed() {
         return 0;
     }
+
 
     @Override
     public String toString() {

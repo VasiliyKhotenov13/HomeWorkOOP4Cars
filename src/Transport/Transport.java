@@ -1,5 +1,9 @@
 package Transport;
 
+import Driver.Drivers;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Transport {
@@ -7,6 +11,11 @@ public abstract class Transport {
     protected String brand;
     protected String model;
     protected double engineVolume;
+
+    private final List<Drivers<?>> drivers = new ArrayList<>() ;
+    private final List<Mechanic<?>> mechanics = new ArrayList<>() ;
+    private final List<Sponsor> sponsors = new ArrayList<>() ;
+
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand == null || brand.length() == 0) {
@@ -38,11 +47,33 @@ public abstract class Transport {
         return engineVolume;
     }
 
+    public List<Drivers<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
     public abstract void startMoving();
 
     public abstract void stopMoving();
 
     public abstract boolean service();
+
+    public void addDriver(Drivers<?> drivers) {
+        drivers.add(drivers);
+    }
+    public void addMechanic(Mechanic<?> mechanic) {
+        mechanics.add(mechanic);
+    }
+    public void addSponsor(Sponsor sponsor) {
+        sponsors.add(sponsor);
+    }
 
     @Override
     public String toString() {
@@ -64,4 +95,6 @@ public abstract class Transport {
     public int hashCode() {
         return Objects.hash(brand, model, engineVolume);
     }
+
+    public abstract void repair();
 }
