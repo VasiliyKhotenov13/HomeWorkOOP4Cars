@@ -10,6 +10,7 @@ import Transport.Sponsor;
 import Transport.Mechanic;
 
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class Main {
         Mechanic<Car> igor = new Mechanic<Car>("Игорь", "Петрович", "Гайка");
         Mechanic<Bus> vitya = new Mechanic<Bus>("Витя", "Простой парень", "Мотор");
         Mechanic<Truck> semen = new Mechanic<Truck>("Семён", "Семёныч", "Авто Слон!");
+        DriverB driver11 = new DriverB("Vasya", "B", 12, null);
 
         Sponsor lukoil = new Sponsor("Лукойл", 5_000_000);
         Sponsor beerCompany = new Sponsor("КрымПиво", 9_000_000);
@@ -26,6 +28,8 @@ public class Main {
         car2.addDriver(new DriverB("Виктор Палыч", "В", 12, car2));
         car2.addMechanic(igor);
         car2.addSponsor(lukoil);
+        car2.addDriver(driver11);
+
         Car car3 = new Car("Тойота", "Камри", 3.5, Car.BodyType.SEDAN);
         Car car4 = new Car("Лада", "Веста Спорт", 1.6, Car.BodyType.CROSSOVER);
 
@@ -35,8 +39,6 @@ public class Main {
         Bus bus4 = new Bus("KIA", "GrandBird", 12.3, Bus.TypeOfCapacity.LARGE);
         bus4.addMechanic(vitya);
         bus4.addSponsor(beerCompany);
-
-
 
         Truck truck1 = new Truck("Scania", "R 730", 16.4, Truck.LoadCapacity.N1);
         truck1.addMechanic(semen);
@@ -89,7 +91,7 @@ public class Main {
 
         car2.addDriver(new DriverB("Vitya", "B", 12, car2));
 
-        List<Transport> transports = List.of(
+        Set<Transport> transports = Set.of(
                 car2,
 //                car2, car3, car4,
                 bus4,
@@ -101,7 +103,6 @@ public class Main {
                 transports) {
             printInfo(transport);
         }
-
     }
 
     public static void printInfo(Transport transport) {

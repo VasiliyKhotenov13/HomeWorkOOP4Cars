@@ -15,7 +15,7 @@ public abstract class Drivers<T extends Transport> {
         this.fullName = fullName;
         this.driverLicence = driverLicence;
         this.experience = experience;
-        setCar(car);
+        this.car = car;
     }
 
     public void startMovement() {
