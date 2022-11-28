@@ -1,12 +1,19 @@
 package Transport;
 
-import java.util.Objects;
+import Driver.Drivers;
+
+import java.util.*;
 
 public abstract class Transport {
 
     protected String brand;
     protected String model;
     protected double engineVolume;
+
+    private final Set<Drivers<?>> drivers = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>() ;
+    private final Set<Sponsor> sponsors = new HashSet<>() ;
+
 
     public Transport(String brand, String model, double engineVolume) {
         if (brand == null || brand.length() == 0) {
@@ -38,8 +45,41 @@ public abstract class Transport {
         return engineVolume;
     }
 
+    public Set<Drivers<?>> getDrivers() {
+        return drivers;
+    }
+
+    public Set<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public Set<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
     public abstract void startMoving();
+
     public abstract void stopMoving();
+
+    public abstract boolean service();
+
+    public void addDriver(Drivers<?> drivers) {
+        drivers.add(drivers);
+    }
+    public void addMechanic(Mechanic<?> mechanic) {
+        mechanics.add(mechanic);
+    }
+    public void addSponsor(Sponsor sponsor) {
+        sponsors.add(sponsor);
+    }
+
+    @Override
+    public String toString() {
+        return "Транспорт. " +
+                " Марка: " + brand +
+                ". Модель: " + model +
+                ". Объём двигателя: " + engineVolume + " л.";
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -54,11 +94,5 @@ public abstract class Transport {
         return Objects.hash(brand, model, engineVolume);
     }
 
-    @Override
-    public String toString() {
-        return "Транспорт. " +
-                " Марка: " + brand +
-                ". Модель: " + model +
-                ". Объём двигателя: " + engineVolume + " л.";
-    }
+    public abstract void repair();
 }
